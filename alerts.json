@@ -1,9 +1,0 @@
-{
-  "signal": [
-    { "id": 1, "name": "json-server", "surname": "typicode" }
-  ],
-  "number": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "message": { "name": "typicode" }
-}
