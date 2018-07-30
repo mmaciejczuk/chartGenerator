@@ -3,7 +3,7 @@ import {Http, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
 import { map } from "rxjs/operators";
 import {User} from "../../shared/models/user.model";
-//import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
+import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
 
 @Injectable()
 export class UserService {
