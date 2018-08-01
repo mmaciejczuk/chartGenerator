@@ -7,7 +7,7 @@ import { UserComponent } from './components/user/user.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { HttpModule } from '@angular/http';
 
-import { NavigationService } from './core/service/navigation.service';
+import { NavigationService } from './core/services/navigation.service';
 import { HttpClientModule } from '@angular/common/http';
 
 

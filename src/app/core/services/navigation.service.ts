@@ -4,7 +4,6 @@ import { HttpHeaders } from '@angular/common/http';
 import {Team} from "../../shared/models/team.model";
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ConditionalExpr } from "../../../../node_modules/@angular/compiler";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,9 +18,5 @@ export class NavigationService {
 
   getTeams(teamsUrl: string): Observable<Team[]> {
         return this.http.get<Team[]>(teamsUrl);
-  } 
+  }
 }
-
-
-// https://www.google.pl/search?ei=nl1gW4XMNOaP6ASf5r_oAQ&q=typescript+httpclient+get+json+to+object&oq=typescript+httpclient+get+json+to+object&gs_l=psy-ab.3...1986.3473.0.4241.10.10.0.0.0.0.314.1276.2j2j2j1.7.0....0...1c.1.64.psy-ab..5.1.170...0i8i7i30k1.0.BEPmb6AfhuE
-

@@ -1,5 +1,5 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { NavigationService } from '../../core/service/navigation.service';
+import { Component, OnInit } from '@angular/core';
+import { NavigationService } from '../../core/services/navigation.service';
 import { Team } from '../../shared/models/team.model';
 
 @Component({
@@ -14,17 +14,13 @@ export class NavmenuComponent implements OnInit {
   constructor(public navigationService: NavigationService) { }
 
   ngOnInit() {
-    this.getTeams();
-    console.log(this.teams);
+    this.fillTeams();
   }
 
-  getTeams(): void {
-    // let c = this.navigationService.getTeams().subscribe(res => this.teams = res as Team[]);
-    // console.log(c);
+  fillTeams(): void {
     let x = this.navigationService.getTeams(this.teamsUrl).subscribe(res => {
-      console.log("to jest res " + res);
         this.teams = res;
-        console.log("to jest teams " + this.teams);
+        console.log(this.teams);
     });
   }  
 }
