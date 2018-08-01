@@ -9,7 +9,8 @@ import { Team } from '../../shared/models/team.model';
   providers: [NavigationService]
 })
 export class NavmenuComponent implements OnInit {
-  teams: Team[];
+  teams: Array<Team>;
+  teamsUrl: string = 'http://localhost:3000/teams';
   constructor(public navigationService: NavigationService) { }
 
   ngOnInit() {
@@ -18,7 +19,12 @@ export class NavmenuComponent implements OnInit {
   }
 
   getTeams(): void {
-    this.navigationService.getTeams()
-      .subscribe(heroes => this.teams = heroes);
+    // let c = this.navigationService.getTeams().subscribe(res => this.teams = res as Team[]);
+    // console.log(c);
+    let x = this.navigationService.getTeams(this.teamsUrl).subscribe(res => {
+      console.log("to jest res " + res);
+        this.teams = res;
+        console.log("to jest teams " + this.teams);
+    });
   }  
 }
