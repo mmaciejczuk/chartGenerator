@@ -6,9 +6,12 @@ import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/user/user.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { NavigationService } from './core/services/navigation.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component'
 
 
 @NgModule({
@@ -16,13 +19,19 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     UserComponent,
-    NavmenuComponent
+    NavmenuComponent,
+    DashboardComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpModule, 
     HttpClientModule,   
-
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      { path: '**', component: PageNotFoundComponent },
+    ])
   ],
   providers: [
     NavigationService,
