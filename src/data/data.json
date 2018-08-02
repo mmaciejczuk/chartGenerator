@@ -3,9 +3,9 @@
     { "id": 1, "name": "Administracja", "description": "Administracja" },
     { "id": 2, "name": "Fakturowanie", "description": "Fakturowanie" },
     { "id": 2, "name": "Finanse", "description": "Finanse" },
-    { "id": 3, "name": "Obsługa Techniczna", "description": "Obsługa Techniczna" },
+    { "id": 3, "name": "Obsluga Techniczna", "description": "Obsluga Techniczna" },
     { "id": 3, "name": "Rozliczenia", "description": "Rozliczenia" },
-    { "id": 4, "name": "Sprawozdawczość", "description": "Sprawozdawczość" }
+    { "id": 4, "name": "Sprawozdawczosc", "description": "Sprawozdawczosc" }
   ],
   "alerts": [
     { "id": 1, "apiId" : 1, "code": 0, "message": "test message val 0" },
@@ -23,7 +23,7 @@
     { "id": 13, "apiId" : 1, "code": 0, "message": "test message val 0" },
     { "id": 14, "apiId" : 2, "code": 1, "message": "test message val 1" }
   ],
-  "apis": [
+  "controllers": [
     { "id": 1, "teamId" : 1, "url": "localhost:3000/", "controller": "ctrl1", "action" : "dosmth" },
     { "id": 2, "teamId" : 2, "url": "localhost:3000/", "controller": "ctrl2", "action" : "dosmth" },
     { "id": 3, "teamId" : 3, "url": "localhost:3000/", "controller": "ctrl2", "action" : "dosmth" }

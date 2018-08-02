@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LowerUpperPipeComponent } from './core/pipes/lower-upper-pipe/lower-upper-pipe.component';
-import { ChartComponent } from './components/chart/chart.component'
+import { ChartComponent } from './components/chart/chart.component';
+import { ChartService } from './core/services/chart.service.';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { ChartComponent } from './components/chart/chart.component'
     DashboardComponent,
     PageNotFoundComponent,
     LowerUpperPipeComponent,
-    ChartComponent
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,14 +39,15 @@ import { ChartComponent } from './components/chart/chart.component'
       { path: 'Administracja', component: DashboardComponent },
       { path: 'Fakturowanie', component: DashboardComponent },
       { path: 'Finanse', component: DashboardComponent },
-      { path: 'Obsługa techniczna', component: DashboardComponent },
+      { path: 'Obsluga techniczna', component: DashboardComponent },
       { path: 'Rozliczenia', component: DashboardComponent },
-      { path: 'Sprawozdawczość', component: DashboardComponent },
+      { path: 'Sprawozdawczosc', component: DashboardComponent },
       { path: '**', component: PageNotFoundComponent },
     ])
   ],
   providers: [
     NavigationService,
+    ChartService
   ],
   bootstrap: [AppComponent]
 })
