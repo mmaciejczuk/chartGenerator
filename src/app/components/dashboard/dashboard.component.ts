@@ -9,7 +9,8 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(this) {
+    console.log(this.document.location.href);
   }
 
 }

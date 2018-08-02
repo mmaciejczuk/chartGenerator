@@ -22,5 +22,5 @@ export class NavmenuComponent implements OnInit {
         this.teams = res;
         console.log(this.teams);
     });
-  }  
+  }
 }
