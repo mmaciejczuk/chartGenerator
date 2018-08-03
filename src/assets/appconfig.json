@@ -1,6 +1,9 @@
 {
-    "apiTeams": "localhost:3000/teams",
-    "apiAlerts": "localhost:3000/alerts",
-    "apiControllers": "localhost:3000/controllers"
+    "WebAPISettings":
+    {
+        "apiTeams": "localhost:3000/teams",
+        "apiAlerts": "localhost:3000/alerts",
+        "apiControllers": "localhost:3000/controllers"
+    }
 }
   
