@@ -1,16 +1,9 @@
-<div *ngIf="chart">
-  <table>
-    <tr>
-      <td style="width: 700px; height: 50%">
-          <canvas id="canvas">{{ chart }}</canvas>
-      </td>
-      <td style="width: 700px; height: 50%">
-          <canvas id="canvas">{{ chart }}</canvas>
-      </td>      
-    </tr>
-  </table>
-  <input type="button" value="Add data" onclick="adddata()">
- <div *ngFor="let alert of alerts">
-      <p>{{alert.id}} -- {{ alert.code }} -- {{alert.time | date:'shortTime'}}<p>
- </div>
+<div  *ngIf="chart" class="wrapper">
+    <canvas width="600" height="250" id="canvas">{{ chart }}</canvas>
 </div>
+
+<!-- <div *ngFor="let alert of alerts">
+    <p>{{alert.id}} -- {{ alert.code }} -- {{alert.time | date:'shortTime'}}<p>
+</div> -->
+
+<button (click)="myEvent($event)">My Button</button>

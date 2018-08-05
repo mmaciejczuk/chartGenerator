@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartService } from '../../core/services/chart.service.';
 import { ChartAlert } from '../../shared/models/chartAlert.model';
 import { Chart } from 'chart.js';
 import { interval, Observable } from 'rxjs';
+import { ApiService } from '../../core/services/api.service';
+import { Api } from '../../shared/models/api.model';
+import { colors } from '../../shared/enums/colors';
+import { urls } from '../../shared/enums/urls';
 
 @Component({
   selector: 'app-chart',
@@ -11,82 +15,59 @@ import { interval, Observable } from 'rxjs';
 })
 export class ChartComponent implements OnInit {
   alerts: Array<ChartAlert>;
-  chart = [];
+  apis: Array<Api>;
+  chart = []
   labels = [];
   values = [];
   private timer;
-  alertsUrl: string = 'http://localhost:3000/alerts';
+  @Input() datasets: any[] = [{ data: [] }];
 
-  constructor(public chartService: ChartService) { }
+  constructor(public chartService: ChartService, public apiService: ApiService ) { }
 
   ngOnInit() {
-
-    this.fillChart();
-
-    // https://www.youtube.com/watch?v=De-zusP8QVM 
-    const source = interval(1000);
-    //output: 0,1,2,3,4,5....
-    // const subscribe = source.subscribe(val => console.log(val));
-    // this.timer = Observable.interval(10000);
-    // this.timer.subscribe((t) => this.onTimeOut()); 
-    // https://www.youtube.com/watch?v=De-zusP8QVM   
-
+    this.getAlerts();
   }
 
+  ngAfterViewInit(){
+    if(this.chart.length == 0){
+      this.chartService.generateChart(this.chart, null, colors.greenRGB);
+    }
+    else{
+      // update chart
+    }
+  }
 
-  adddata(): void{
-    // this.chart.data.datasets[0].data[5] = 1;
-    // this.chart.data.labels[5] = "New value";
-    // this.chart.update();
-    alert("ok");
-}
+  myEvent(event) {
+    this.datasets = [
+      {
+        label: 'label1',
+        backgroundColor: colors.redRGB,
+        borderColor: colors.redRGB,    
+        fill: false,
+        borderWidth : 10,
+        pointRadius : 0,
+        data: [
+            {
+              x: 0, y: 40,
+            }
+        ]
+    },      
+    ];
+    //console.log("DATASETS" + this.datasets);
 
-  fillChart(): void {
-      this.chartService.returnData(this.alertsUrl).subscribe(res => {
-        // example to map data from model -> let temp_max = res['list'].map(res => res.main.temp_max)
-        // https://www.youtube.com/watch?v=RTzi5DS7On4
+    // this.chartService.addDataSet(this.chart, newDataset);
+    //var json = '{"data":[{"x":10, "y":10}]}';
+    //var data = JSON.parse(json);
+    // data: Object {data: Array[2]}
+    // console.log(data);
+    // this.chartService.addDataSet(this.chart, this.datasets);
+    // console.log(data);
+  }
+
+  getAlerts(): void {
+      this.chartService.getAlertData(urls.alertsUrl).subscribe(res => {
         this.alerts = res;
         console.log(this.alerts);
-
-        this.chart = new Chart('canvas', {
-          type: 'bar',
-          data: {
-            labels: ["dd", "rr", "yy", "gg", "vv"],
-            datasets: [
-              {
-                data: [0, 0, 1, 2, 2, 2],
-                borderColor: '#3cba9f',
-                backgroundColor: '#3cba9f',
-                //fill: false
-              },
-              {
-                data: [1, 2, 1, 1, 1, 0],
-                borderColor: '#0066ff',
-                backgroundColor: '#0066ff',
-                //fill: false
-              },
-              {
-                data: [1, 0, 0, 2, 0, 0],
-                borderColor: '#6600ff',
-                backgroundColor: '#6600ff',
-                //fill: false
-              },                            
-            ]
-          },
-          options:{
-            legend: {
-              display: false
-            },
-            scales: {
-              xAaxes: [{
-                display: true
-              }],
-              yAxes: [{
-                display: true
-              }]
-            }
-          }
-        })
     });
   }
 }

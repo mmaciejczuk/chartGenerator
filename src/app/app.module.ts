@@ -16,6 +16,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { NavigationService } from './core/services/navigation.service';
 import { ChartService } from './core/services/chart.service.';
 import { ConfigurationService } from './core/services/configuration.service';
+import { ApiService } from './core/services/api.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ConfigurationService } from './core/services/configuration.service';
   providers: [
     NavigationService,
     ChartService, 
+    ApiService,
     ConfigurationService
   ],
   bootstrap: [AppComponent]
